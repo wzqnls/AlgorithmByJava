@@ -11,6 +11,8 @@ public class InsertionSort {
             for(int j = i; j > 0; j--) {
                 if(arr[j].compareTo(arr[j-1]) < 0) {
                     swap(arr, j, j-1);
+                }else {
+                    break;
                 }
             }
         }
