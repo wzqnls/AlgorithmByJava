@@ -2,7 +2,7 @@ package com.selectionsort;
 
 public class SelectionSort {
 
-    // 禁止算法类实例化
+    /**禁止算法类实例 */
     private SelectionSort(){}
 
     public static void sort(int[] arr) {
