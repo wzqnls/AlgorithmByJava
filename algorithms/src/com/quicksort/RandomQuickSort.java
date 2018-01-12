@@ -7,6 +7,7 @@ import java.util.Arrays;
 /**
  * @author lishuo
  * 随机快速排序算法
+ * 对于近乎有序的数组有很大性能提升
  */
 public class RandomQuickSort {
 

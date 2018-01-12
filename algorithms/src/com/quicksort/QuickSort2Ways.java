@@ -7,6 +7,7 @@ import java.util.Arrays;
 /**
  * @author lishuo
  * 双路快速排序算法
+ * 对于存在大量重复键值得数组有很大性能提升
  */
 public class QuickSort2Ways {
 
