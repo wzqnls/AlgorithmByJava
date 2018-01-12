@@ -3,7 +3,7 @@ package com.bubblesort;
 public class BubbleSort {
     private BubbleSort(){}
 
-    private static void sort(Comparable[] arr) {
+    public static void sort(Comparable[] arr) {
         int n = arr.length;
 
         for(int i = 0; i < n; i++) {
@@ -13,10 +13,10 @@ public class BubbleSort {
                 }
 
                 // 打印每次循环结果
-                for (Object obj: arr) {
-                    System.out.print(obj + " ");
-                }
-                System.out.println();
+//                for (Object obj: arr) {
+//                    System.out.print(obj + " ");
+//                }
+//                System.out.println();
             }
         }
     }
