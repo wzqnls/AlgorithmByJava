@@ -18,6 +18,21 @@ public class InsertionSort {
         }
     }
 
+    public static void sort(Comparable[] arr, int l, int r) {
+        assert l >= 0 && l <= r && r < arr.length;
+
+        for(int i = l + 1; i <= r; i++) {
+            for(int j = i; j > 0; i--) {
+                if(arr[j].compareTo(arr[j - 1]) < 0) {
+                    swap(arr, j, j - 1);
+                }
+                else {
+                    break;
+                }
+            }
+        }
+    }
+
     private static void swap(Object[] arr, int i, int j) {
         Object temp = arr[i];
         arr[i] = arr[j];
