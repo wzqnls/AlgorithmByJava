@@ -1,7 +1,6 @@
 package com.quicksort;
 
-import com.insertionsort.InsertionSort;
-import com.sorttest.SortTest;
+import com.utils.SortTest;
 
 import java.util.Arrays;
 
