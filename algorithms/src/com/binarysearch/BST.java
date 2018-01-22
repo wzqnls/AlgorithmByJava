@@ -38,6 +38,61 @@ public class BST<Key extends Comparable<Key>, Value> {
         return count == 0;
     }
 
+    // 向二分搜索树插入新的节点
+    public void insert(Key key, Value value) {
+        root = insert(root, key, value);
+    }
+
+    private Node insert(Node node, Key key, Value value) {
+        if (node == null) {
+            count++;
+            return new Node(key, value);
+        }
+
+        if (key.compareTo(node.key) == 0) {
+            node.value = value;
+        }
+        else if (key.compareTo(node.key) < 0) {
+            node.left = insert(node.left, key, value);
+        }
+        else {
+            node.right = insert(node.right, key, value);
+        }
+    }
+
+    private boolean contain(Node node, Key key) {
+        if (node == null) {
+            return false;
+        }
+
+        if (key.compareTo(node.key) == 0) {
+            return true;
+        }
+        else if(key.compareTo(node.key) < 0) {
+            return contain(node.left, key);
+
+        }
+        else {
+            return contain(node.right, key);
+        }
+    }
+
+    private Value search(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+
+        if (key.compareTo(node.key) == 0) {
+            return node.value;
+        }
+        else if(key.compareTo(node.key) < 0) {
+            return search(node.left, key);
+        }
+        else {
+            return search(node.right, key);
+        }
+    }
+
     public static void main(String[] args) {
 
     }
