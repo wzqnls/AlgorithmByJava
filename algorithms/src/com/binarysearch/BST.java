@@ -141,6 +141,57 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
+    /**
+     * 查找以node为根的bst的最小键值和最大键值所在节点
+     */
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    private Node maximun(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximun(node.right);
+    }
+
+    /**
+     * 删除以node为根的bst的最小节点和最大节点
+     *
+     * 整体思路一致：以最小节点为例
+     * 通过递归查找最小，对该节点右子节点进行重新赋值
+     * 删除该节点后，返回其右子节点
+     * 将此右子节点重新赋值给新父节点的左子节点
+     */
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            count--;
+            return rightNode;
+        }
+
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            count--;
+            return leftNode;
+        }
+
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+
+
     public static void main(String[] args) {
 
     }
