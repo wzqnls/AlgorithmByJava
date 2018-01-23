@@ -1,5 +1,7 @@
 package com.binarysearch;
 
+import java.util.LinkedList;
+
 /**
  * 二分搜索树
  * @param <Key>
@@ -116,6 +118,25 @@ public class BST<Key extends Comparable<Key>, Value> {
     private void postOrder(Node node) {
         if (node != null) {
             postOrder(node.left);
+        }
+    }
+
+    /**
+     * 添加广度优先遍历
+     */
+    public void levelOrder() {
+        LinkedList<Node> q = new LinkedList<Node>();
+        q.add(root);
+        while( !q.isEmpty() ) {
+            Node node = q.remove();
+            System.out.println(node.key);
+
+            if(node.left != null) {
+                q.add(node.left);
+            }
+            if (node.right != null) {
+                q.add(node.right)
+            }
         }
     }
 
