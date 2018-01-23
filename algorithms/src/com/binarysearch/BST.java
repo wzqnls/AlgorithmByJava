@@ -93,6 +93,33 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
+    /**
+     * 添加深度优先遍历
+     * 包括前序遍历， 中序遍历， 后续遍历
+     */
+    private void preOrder(Node node) {
+        if (node != null) {
+            System.out.println(node.key);
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+    private void inOrder(Node node) {
+        if (node != null) {
+            inOrder(node.left);
+            System.out.println(node.key);
+            inOrder(node.right);
+        }
+    }
+
+    private void postOrder(Node node) {
+        if (node != null) {
+            postOrder(node.left);
+        }
+    }
+
+
     public static void main(String[] args) {
 
     }
