@@ -20,6 +20,13 @@ public class BST<Key extends Comparable<Key>, Value> {
             this.value = value;
             left = right = null;
         }
+
+        public Node(Node node) {
+            this.key = node.key;
+            this.value = node.value;
+            this.left = node.left;
+            this.right = node.right;
+        }
     }
 
     // 根节点
@@ -43,6 +50,28 @@ public class BST<Key extends Comparable<Key>, Value> {
     // 向二分搜索树插入新的节点
     public void insert(Key key, Value value) {
         root = insert(root, key, value);
+    }
+
+    // 查看bst中是否存在键值key
+    public boolean contain(Key key) {
+        return contain(root, key);
+    }
+
+    // 查找bst中key对应的值 不存在的话返回null
+    public Value search(Key key) {
+        return search(root, key);
+    }
+
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    public void postOrder() {
+        postOrder(root);
     }
 
     private Node insert(Node node, Key key, Value value) {
@@ -140,6 +169,20 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
+    // 寻找bst中最小的键值
+    public Key minimum() {
+        assert count != 0;
+        Node miniNode = minimum(root);
+        return miniNode.key;
+    }
+
+    // 寻找bst中最大的键值
+    public Key maxinum() {
+        assert count != 0;
+        Node maxNode = maximun(root);
+        return maxNode.key;
+    }
+
 
     /**
      * 查找以node为根的bst的最小键值和最大键值所在节点
@@ -166,6 +209,23 @@ public class BST<Key extends Comparable<Key>, Value> {
      * 删除该节点后，返回其右子节点
      * 将此右子节点重新赋值给新父节点的左子节点
      */
+
+    public void removeMin() {
+        if (root != null) {
+            root = removeMin(root);
+        }
+    }
+
+    public void removeMax() {
+        if (root != null) {
+            root = removeMax(root);
+        }
+    }
+
+    public void remove(Key key) {
+        root = remove(root, key);
+    }
+
     private Node removeMin(Node node) {
         if (node.left == null) {
             Node rightNode = node.right;
@@ -190,6 +250,43 @@ public class BST<Key extends Comparable<Key>, Value> {
         return node;
     }
 
+    private Node remove(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
+
+        if (key.compareTo(node.key) < 0) {
+            node.left = remove(node.left, key);
+            return node;
+        }
+        else if (key.compareTo(node.key) > 0) {
+            node.right = remove(node.right, key);
+            return node;
+        }
+        else {
+            // key == node.key
+
+            // 待删除节点左子树为空时
+            removeMin(node);
+            // 待删除节点右子树为空时
+            removeMax(node);
+
+            /**
+             * 待删除节点左右子树均不为空
+             * 找到以该节点为根的子树的右子树的最小值
+             * 并用此节点代替待删除节点位置
+             */
+            Node successor = new Node(minimum(node.right));
+            count++;
+
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+
+            node.left = node.right = null;
+            count--;
+            return successor;
+        }
+    }
 
 
     public static void main(String[] args) {
