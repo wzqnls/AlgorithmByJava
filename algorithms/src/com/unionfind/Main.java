@@ -5,8 +5,9 @@ import com.utils.UnionFindTest;
 public class Main {
 
     public static void main(String[] args) {
-        int n = 100000;
-        UnionFindTest.testUF1(n);
-        UnionFindTest.testUF2(n);
+        int n = 10000000;
+//        UnionFindTest.testUF1(n);
+//        UnionFindTest.testUF2(n);
+        UnionFindTest.testUF3(n);
     }
 }
