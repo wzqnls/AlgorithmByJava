@@ -7,5 +7,6 @@ public class Main {
     public static void main(String[] args) {
         int n = 100000;
         UnionFindTest.testUF1(n);
+        UnionFindTest.testUF2(n);
     }
 }
