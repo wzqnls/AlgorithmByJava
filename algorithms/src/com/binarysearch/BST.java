@@ -89,6 +89,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         else {
             node.right = insert(node.right, key, value);
         }
+        return node;
     }
 
     private boolean contain(Node node, Key key) {
@@ -164,7 +165,7 @@ public class BST<Key extends Comparable<Key>, Value> {
                 q.add(node.left);
             }
             if (node.right != null) {
-                q.add(node.right)
+                q.add(node.right);
             }
         }
     }
