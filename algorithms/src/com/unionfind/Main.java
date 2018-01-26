@@ -8,6 +8,7 @@ public class Main {
         int n = 10000000;
 //        UnionFindTest.testUF1(n);
 //        UnionFindTest.testUF2(n);
-        UnionFindTest.testUF3(n);
+//        UnionFindTest.testUF3(n);
+        UnionFindTest.testUF4(n);
     }
 }
