@@ -23,8 +23,14 @@ public class UnionFind4 {
 
     public int find(int p) {
         assert p >= 0 && p < count;
+//        if(p != parent[p]) {
+//            p = parent[p];
+//        }
+//        return p;
+
+        // 进行路径压缩优化
         if(p != parent[p]) {
-            p = parent[p];
+            p = parent[parent[p]];
         }
         return p;
     }
