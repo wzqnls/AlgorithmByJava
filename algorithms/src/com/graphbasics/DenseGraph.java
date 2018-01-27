@@ -1,5 +1,7 @@
 package com.graphbasics;
 
+import java.util.Vector;
+
 /**
  * @author lishuo
  * 稠密图 -- 邻接矩阵
@@ -52,13 +54,22 @@ public class DenseGraph {
             g[w][v] = true;
         }
         m++;
-
-
     }
 
     public boolean hasEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
         return g[v][w];
+    }
+
+    public Iterable<Integer> adj(int v) {
+        assert v >= 0 && v < n;
+        Vector<Integer> adjV = new Vector<Integer>();
+        for (int i = 0; i < n; i++) {
+            if (g[v][i]) {
+                adjV.add(i);
+            }
+        }
+        return adjV;
     }
 }

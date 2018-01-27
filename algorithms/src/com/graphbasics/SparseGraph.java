@@ -51,14 +51,17 @@ public class SparseGraph {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
 
-        if (hasEdge(v, w)) {
-            return;
-        }
-
         g[v].add(w);
         if (v != w && !directed) {
             g[w].add(v);
         }
         m++;
+    }
+
+    // 返回图中一个顶点所有邻边
+    // 由于java引用机制，返回一个Vector不会带来额外开销
+    public Iterable<Integer> adj(int v) {
+        assert v >= 0 && v < n;
+        return g[v];
     }
 }
