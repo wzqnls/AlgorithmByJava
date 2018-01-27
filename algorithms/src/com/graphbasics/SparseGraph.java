@@ -6,7 +6,7 @@ import java.util.Vector;
  * @author lishuo
  * 稀疏图 -- 邻接表
  */
-public class SparseGraph {
+public class SparseGraph implements Graph{
     private int n;
     private int m;
     private boolean directed;
@@ -27,14 +27,17 @@ public class SparseGraph {
         }
     }
 
+    @Override
     public int V() {
         return n;
     }
 
+    @Override
     public int E() {
         return m;
     }
 
+    @Override
     public boolean hasEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
@@ -47,6 +50,7 @@ public class SparseGraph {
         return false;
     }
 
+    @Override
     public void addEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
@@ -60,8 +64,20 @@ public class SparseGraph {
 
     // 返回图中一个顶点所有邻边
     // 由于java引用机制，返回一个Vector不会带来额外开销
+    @Override
     public Iterable<Integer> adj(int v) {
         assert v >= 0 && v < n;
         return g[v];
+    }
+
+    @Override
+    public void show() {
+        for (int i = 0; i < n; i++) {
+            System.out.print("Vertex " + i + ":\t");
+            for (int j = 0; j < g[i].size(); j++) {
+                System.out.print(g[i].elementAt(j) + "\t");
+            }
+            System.out.println();
+        }
     }
 }

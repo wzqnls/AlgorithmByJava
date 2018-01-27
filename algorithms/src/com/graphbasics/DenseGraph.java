@@ -6,7 +6,7 @@ import java.util.Vector;
  * @author lishuo
  * 稠密图 -- 邻接矩阵
  */
-public class DenseGraph {
+public class DenseGraph implements Graph{
 
     // 节点数
     private int n;
@@ -31,16 +31,19 @@ public class DenseGraph {
     }
 
     // 返回节点个数
+    @Override
     public int V() {
         return n;
     }
 
     // 返回边数
+    @Override
     public int E() {
         return m;
     }
 
     // 向图中添加边
+    @Override
     public void addEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
@@ -56,12 +59,14 @@ public class DenseGraph {
         m++;
     }
 
+    @Override
     public boolean hasEdge(int v, int w) {
         assert v >= 0 && v < n;
         assert w >= 0 && w < n;
         return g[v][w];
     }
 
+    @Override
     public Iterable<Integer> adj(int v) {
         assert v >= 0 && v < n;
         Vector<Integer> adjV = new Vector<Integer>();
@@ -71,5 +76,14 @@ public class DenseGraph {
             }
         }
         return adjV;
+    }
+
+    @Override
+    public void show() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(g[i][j] + "\t");
+            }
+        }
     }
 }
