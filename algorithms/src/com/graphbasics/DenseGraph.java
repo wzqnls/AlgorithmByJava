@@ -84,6 +84,7 @@ public class DenseGraph implements Graph{
             for (int j = 0; j < n; j++) {
                 System.out.print(g[i][j] + "\t");
             }
+            System.out.println();
         }
     }
 }
