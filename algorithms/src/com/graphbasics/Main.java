@@ -10,8 +10,8 @@ public class Main {
         sparseGraph.show();
         System.out.println();
 
-        Path path = new Path(sparseGraph, 0);
+        ShortestPath shortestPath = new ShortestPath(sparseGraph, 0);
         System.out.println("Path from 0 to 4: ");
-        path.showPath(4);
+        shortestPath.showPath(4);
     }
 }
